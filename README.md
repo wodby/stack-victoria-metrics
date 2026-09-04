@@ -17,12 +17,14 @@ composition for VictoriaMetrics.
 ## Service definitions
 
 - [VictoriaMetrics service](https://github.com/wodby/service-victoria-metrics)
+- [Grafana service](https://github.com/wodby/service-grafana)
 
 ## What's included
 
 | Component / service | Default configuration |
 | --- | --- |
 | VictoriaMetrics<br>`victoria-metrics` | required; enabled by default; volumes: `data` 20 GB |
+| Grafana<br>`grafana` | optional; enabled by default; volumes: `data` 10 GB; links: `victoria-metrics` → `victoria-metrics` |
 
 Enabled optional services are selected by default but can be excluded when an
 app is created. Disabled optional services are available but not selected by
@@ -35,3 +37,8 @@ wodby stack validate-manifest stack.yml --org <org-id>
 ```
 
 <!-- wodby:generated:end -->
+
+## Grafana
+
+Grafana is enabled by default and provides the stack's public interface. Its
+VictoriaMetrics data source is provisioned automatically.

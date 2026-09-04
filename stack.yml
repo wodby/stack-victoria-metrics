@@ -21,3 +21,27 @@ services:
         limit:
           cpu: 1000
           memory: 2048
+- name: grafana
+  title: Grafana
+  service: grafana
+  main: true
+  links:
+  - name: victoria-metrics
+    service: victoria-metrics
+  configs:
+  - name: datasources
+    config: configs/grafana-datasources.yml.tmpl
+  volumes:
+  - name: data
+    size: 10
+  workloads:
+  - name: main
+    containers:
+    - name: grafana
+      resources:
+        request:
+          cpu: 200
+          memory: 512
+        limit:
+          cpu: 1000
+          memory: 1024
