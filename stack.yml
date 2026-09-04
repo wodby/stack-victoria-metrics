@@ -1,0 +1,23 @@
+name: victoria-metrics
+title: VictoriaMetrics
+icon: victoriametrics
+
+services:
+- name: victoria-metrics
+  title: VictoriaMetrics
+  service: victoria-metrics
+  required: true
+  volumes:
+  - name: data
+    size: 20
+  workloads:
+  - name: main
+    containers:
+    - name: victoria-metrics
+      resources:
+        request:
+          cpu: 200
+          memory: 512
+        limit:
+          cpu: 1000
+          memory: 2048
