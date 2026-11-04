@@ -22,6 +22,26 @@ services:
         limit:
           cpu: 1000
           memory: 2048
+- name: otel-collector
+  title: OpenTelemetry Collector
+  service: opentelemetry-collector
+  links:
+  - name: victoria-metrics
+    service: victoria-metrics
+  configs:
+  - name: config
+    config: configs/otel-collector.yaml
+  workloads:
+  - name: main
+    containers:
+    - name: otelcol
+      resources:
+        request:
+          cpu: 100
+          memory: 128
+        limit:
+          cpu: 500
+          memory: 512
 - name: grafana
   title: Grafana
   service: grafana
