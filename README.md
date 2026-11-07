@@ -26,7 +26,7 @@ composition for VictoriaMetrics.
 | Component / service | Default configuration |
 | --- | --- |
 | VictoriaMetrics<br>`victoria-metrics` | required; enabled by default; volumes: `data` 20 GB |
-| OpenTelemetry Collector<br>`otel-collector` | optional; enabled by default; links: `victoria-metrics` → `victoria-metrics` |
+| OpenTelemetry Collector<br>`otel-collector` | optional; enabled by default; links: `metrics` → `victoria-metrics` |
 | Grafana<br>`grafana` | optional; enabled by default; volumes: `data` 10 GB; links: `victoria-metrics` → `victoria-metrics` |
 
 Enabled optional services are selected by default but can be excluded when an
