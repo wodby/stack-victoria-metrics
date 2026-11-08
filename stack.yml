@@ -11,34 +11,12 @@ services:
   volumes:
   - name: data
     size: 20
-  workloads:
-  - name: main
-    containers:
-    - name: victoria-metrics
-      resources:
-        request:
-          cpu: 200
-          memory: 512
-        limit:
-          cpu: 1000
-          memory: 2048
 - name: otel-collector
   title: OpenTelemetry Collector
   service: opentelemetry-collector
   links:
   - name: metrics
     service: victoria-metrics
-  workloads:
-  - name: main
-    containers:
-    - name: otelcol
-      resources:
-        request:
-          cpu: 100
-          memory: 128
-        limit:
-          cpu: 500
-          memory: 512
 - name: grafana
   title: Grafana
   service: grafana
@@ -52,14 +30,3 @@ services:
   volumes:
   - name: data
     size: 10
-  workloads:
-  - name: main
-    containers:
-    - name: grafana
-      resources:
-        request:
-          cpu: 200
-          memory: 512
-        limit:
-          cpu: 1000
-          memory: 1024
